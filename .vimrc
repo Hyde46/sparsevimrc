@@ -81,6 +81,8 @@ map <C-x> :ClangFormat
 nmap <F3> :YcmCompleter GoTo <CR>
 nmap <F2> :YcmCompleter GetDoc  <CR>
 
+nmap <F4> <C-W>v :YcmCompleter GoTo <CR>
+
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <F9> :nohl<CR><F9>\
 
@@ -107,7 +109,7 @@ autocmd BufRead *.py set nowrap
 autocmd BufRead *.py set go+=b
 autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
 autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd BufRead *.py nmap <F5> :!python %<CR>
+autocmd BufRead *.py map <F5> :w! \| :!python3 %<CR>
 
 " Command for auto formating of c and c++ code (google styleguide) using astyle
 fun! FormatCpp() "{{{
@@ -146,3 +148,4 @@ let g:vimtex_latexmk_callback_hooks = ['SingleShotWithCallback']
 function! SingleShotWithCallback(status)
 	silent call vimtex#latexmk#stop()
 endfunction 
+
